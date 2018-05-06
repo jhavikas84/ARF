@@ -1,0 +1,12 @@
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\Acme.Data.Repositories.dll.config
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\Acme.Data.Repositories.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\Acme.Data.Repositories.pdb
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\EntityFramework.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\EntityFramework.xml
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\obj\Debug\Acme.Data.Repositories.csproj.CoreCompileInputs.cache
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\obj\Debug\Acme.Data.Repositories.csproj.CopyComplete
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\obj\Debug\Acme.Data.Repositories.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\obj\Debug\Acme.Data.Repositories.pdb
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Data.Repositories\obj\Debug\Acme.Data.Repositories.csprojResolveAssemblyReference.cache

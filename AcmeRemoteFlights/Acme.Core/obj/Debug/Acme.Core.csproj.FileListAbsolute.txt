@@ -1,0 +1,14 @@
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\Acme.Core.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\Acme.Core.pdb
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\Acme.Data.Repositories.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\EntityFramework.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\Acme.Data.Repositories.pdb
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\Acme.Data.Repositories.dll.config
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\EntityFramework.xml
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\obj\Debug\Acme.Core.csprojResolveAssemblyReference.cache
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\obj\Debug\Acme.Core.csproj.CoreCompileInputs.cache
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\obj\Debug\Acme.Core.csproj.CopyComplete
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\obj\Debug\Acme.Core.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\obj\Debug\Acme.Core.pdb
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\AutoMapper.dll
+C:\Users\jhavi\source\repos\AcmeRemoteFlights\Acme.Core\bin\Debug\AutoMapper.xml

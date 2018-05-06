@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AcmeDBModelStoreContainer" CdmEntityContainer="AcmeDBEntities">
+    <EntitySetMapping Name="AcmeErrorLogs">
+      <EntityTypeMapping TypeName="AcmeDBModel.AcmeErrorLog">
+        <MappingFragment StoreEntitySet="AcmeErrorLogs">
+          <ScalarProperty Name="ExceptionDate" ColumnName="ExceptionDate" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="AcmeDBModel.Booking">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="BookingAmount" ColumnName="BookingAmount" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+          <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flights">
+      <EntityTypeMapping TypeName="AcmeDBModel.Flight">
+        <MappingFragment StoreEntitySet="Flights">
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+          <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="ArrivalCity" ColumnName="ArrivalCity" />
+          <ScalarProperty Name="DepartureCity" ColumnName="DepartureCity" />
+          <ScalarProperty Name="SeatCapacity" ColumnName="SeatCapacity" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FlightName" ColumnName="FlightName" />
+          <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PassengerBookings">
+      <EntityTypeMapping TypeName="AcmeDBModel.PassengerBooking">
+        <MappingFragment StoreEntitySet="PassengerBookings">
+          <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passengers">
+      <EntityTypeMapping TypeName="AcmeDBModel.Passenger">
+        <MappingFragment StoreEntitySet="Passengers">
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

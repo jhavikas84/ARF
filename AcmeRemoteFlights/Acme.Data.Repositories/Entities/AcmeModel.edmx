@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AcmeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AcmeErrorLogs">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="int" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MethodName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ErrorMessage" Type="varchar(max)" Nullable="false" />
+          <Property Name="StackTrace" Type="varchar(max)" Nullable="false" />
+          <Property Name="ExceptionDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FlightNumber" Type="varchar" MaxLength="20" />
+          <Property Name="BookingDate" Type="datetime" />
+          <Property Name="BookingAmount" Type="money" />
+        </EntityType>
+        <EntityType Name="Flights">
+          <Key>
+            <PropertyRef Name="FlightNumber" />
+          </Key>
+          <Property Name="FlightNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FlightName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SeatCapacity" Type="int" Nullable="false" />
+          <Property Name="DepartureCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ArrivalCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BasePrice" Type="money" Nullable="false" />
+          <Property Name="TaxPercentage" Type="float" />
+          <Property Name="DiscountRate" Type="float" />
+        </EntityType>
+        <EntityType Name="PassengerBookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookingId" Type="int" />
+          <Property Name="PassengerId" Type="int" />
+        </EntityType>
+        <EntityType Name="Passengers">
+          <Key>
+            <PropertyRef Name="PassengerId" />
+          </Key>
+          <Property Name="PassengerId" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="200" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddressLine1" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AddressLine2" Type="varchar" MaxLength="200" />
+          <Property Name="AddressLine3" Type="varchar" MaxLength="200" />
+          <Property Name="Country" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Bookings__Flight__4CA06362">
+          <End Role="Flights" Type="Self.Flights" Multiplicity="0..1" />
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flights">
+              <PropertyRef Name="FlightNumber" />
+            </Principal>
+            <Dependent Role="Bookings">
+              <PropertyRef Name="FlightNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passenger__Booki__4F7CD00D">
+          <End Role="Bookings" Type="Self.Bookings" Multiplicity="0..1" />
+          <End Role="PassengerBookings" Type="Self.PassengerBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bookings">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="PassengerBookings">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passenger__Passe__5070F446">
+          <End Role="Passengers" Type="Self.Passengers" Multiplicity="0..1" />
+          <End Role="PassengerBookings" Type="Self.PassengerBookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passengers">
+              <PropertyRef Name="PassengerId" />
+            </Principal>
+            <Dependent Role="PassengerBookings">
+              <PropertyRef Name="PassengerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AcmeDBModelStoreContainer">
+          <EntitySet Name="AcmeErrorLogs" EntityType="Self.AcmeErrorLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookings" EntityType="Self.Bookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flights" EntityType="Self.Flights" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PassengerBookings" EntityType="Self.PassengerBookings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passengers" EntityType="Self.Passengers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Bookings__Flight__4CA06362" Association="Self.FK__Bookings__Flight__4CA06362">
+            <End Role="Flights" EntitySet="Flights" />
+            <End Role="Bookings" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__Booki__4F7CD00D" Association="Self.FK__Passenger__Booki__4F7CD00D">
+            <End Role="Bookings" EntitySet="Bookings" />
+            <End Role="PassengerBookings" EntitySet="PassengerBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__Passe__5070F446" Association="Self.FK__Passenger__Passe__5070F446">
+            <End Role="Passengers" EntitySet="Passengers" />
+            <End Role="PassengerBookings" EntitySet="PassengerBookings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AcmeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AcmeDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AcmeErrorLogs" EntityType="AcmeDBModel.AcmeErrorLog" />
+          <EntitySet Name="Bookings" EntityType="AcmeDBModel.Booking" />
+          <EntitySet Name="Flights" EntityType="AcmeDBModel.Flight" />
+          <EntitySet Name="PassengerBookings" EntityType="AcmeDBModel.PassengerBooking" />
+          <EntitySet Name="Passengers" EntityType="AcmeDBModel.Passenger" />
+          <AssociationSet Name="FK__Bookings__Flight__4CA06362" Association="AcmeDBModel.FK__Bookings__Flight__4CA06362">
+            <End Role="Flight" EntitySet="Flights" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__Booki__4F7CD00D" Association="AcmeDBModel.FK__Passenger__Booki__4F7CD00D">
+            <End Role="Booking" EntitySet="Bookings" />
+            <End Role="PassengerBooking" EntitySet="PassengerBookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Passenger__Passe__5070F446" Association="AcmeDBModel.FK__Passenger__Passe__5070F446">
+            <End Role="Passenger" EntitySet="Passengers" />
+            <End Role="PassengerBooking" EntitySet="PassengerBookings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AcmeErrorLog">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MethodName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorMessage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BookingId" />
+          </Key>
+          <Property Name="BookingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FlightNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BookingDate" Type="DateTime" Precision="3" />
+          <Property Name="BookingAmount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Flight" Relationship="AcmeDBModel.FK__Bookings__Flight__4CA06362" FromRole="Booking" ToRole="Flight" />
+          <NavigationProperty Name="PassengerBookings" Relationship="AcmeDBModel.FK__Passenger__Booki__4F7CD00D" FromRole="Booking" ToRole="PassengerBooking" />
+        </EntityType>
+        <EntityType Name="Flight">
+          <Key>
+            <PropertyRef Name="FlightNumber" />
+          </Key>
+          <Property Name="FlightNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FlightName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SeatCapacity" Type="Int32" Nullable="false" />
+          <Property Name="DepartureCity" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ArrivalCity" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TaxPercentage" Type="Double" />
+          <Property Name="DiscountRate" Type="Double" />
+          <NavigationProperty Name="Bookings" Relationship="AcmeDBModel.FK__Bookings__Flight__4CA06362" FromRole="Flight" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="PassengerBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookingId" Type="Int32" />
+          <Property Name="PassengerId" Type="Int32" />
+          <NavigationProperty Name="Booking" Relationship="AcmeDBModel.FK__Passenger__Booki__4F7CD00D" FromRole="PassengerBooking" ToRole="Booking" />
+          <NavigationProperty Name="Passenger" Relationship="AcmeDBModel.FK__Passenger__Passe__5070F446" FromRole="PassengerBooking" ToRole="Passenger" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="PassengerId" />
+          </Key>
+          <Property Name="PassengerId" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddressLine3" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PassengerBookings" Relationship="AcmeDBModel.FK__Passenger__Passe__5070F446" FromRole="Passenger" ToRole="PassengerBooking" />
+        </EntityType>
+        <Association Name="FK__Bookings__Flight__4CA06362">
+          <End Type="AcmeDBModel.Flight" Role="Flight" Multiplicity="0..1" />
+          <End Type="AcmeDBModel.Booking" Role="Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flight">
+              <PropertyRef Name="FlightNumber" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="FlightNumber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passenger__Booki__4F7CD00D">
+          <End Type="AcmeDBModel.Booking" Role="Booking" Multiplicity="0..1" />
+          <End Type="AcmeDBModel.PassengerBooking" Role="PassengerBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Booking">
+              <PropertyRef Name="BookingId" />
+            </Principal>
+            <Dependent Role="PassengerBooking">
+              <PropertyRef Name="BookingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Passenger__Passe__5070F446">
+          <End Type="AcmeDBModel.Passenger" Role="Passenger" Multiplicity="0..1" />
+          <End Type="AcmeDBModel.PassengerBooking" Role="PassengerBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="PassengerId" />
+            </Principal>
+            <Dependent Role="PassengerBooking">
+              <PropertyRef Name="PassengerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AcmeDBModelStoreContainer" CdmEntityContainer="AcmeDBEntities">
+          <EntitySetMapping Name="AcmeErrorLogs">
+            <EntityTypeMapping TypeName="AcmeDBModel.AcmeErrorLog">
+              <MappingFragment StoreEntitySet="AcmeErrorLogs">
+                <ScalarProperty Name="ExceptionDate" ColumnName="ExceptionDate" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="AcmeDBModel.Booking">
+              <MappingFragment StoreEntitySet="Bookings">
+                <ScalarProperty Name="BookingAmount" ColumnName="BookingAmount" />
+                <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flights">
+            <EntityTypeMapping TypeName="AcmeDBModel.Flight">
+              <MappingFragment StoreEntitySet="Flights">
+                <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+                <ScalarProperty Name="TaxPercentage" ColumnName="TaxPercentage" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="ArrivalCity" ColumnName="ArrivalCity" />
+                <ScalarProperty Name="DepartureCity" ColumnName="DepartureCity" />
+                <ScalarProperty Name="SeatCapacity" ColumnName="SeatCapacity" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FlightName" ColumnName="FlightName" />
+                <ScalarProperty Name="FlightNumber" ColumnName="FlightNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PassengerBookings">
+            <EntityTypeMapping TypeName="AcmeDBModel.PassengerBooking">
+              <MappingFragment StoreEntitySet="PassengerBookings">
+                <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+                <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="AcmeDBModel.Passenger">
+              <MappingFragment StoreEntitySet="Passengers">
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PassengerId" ColumnName="PassengerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
